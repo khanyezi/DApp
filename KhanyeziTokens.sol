@@ -1,9 +1,8 @@
 pragma solidity ^0.5;
 
-import "zeppelin-solidity/contracts/token/ERC20/IERC20.sol";
-import "zeppelin-solidity/contracts/ownership/Ownable.sol";
-import "openzeppelin-solidity/contracts/math/SafeMath.sol";
-
+import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
+import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
+import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 contract KhanyeziTokens is IERC20, Ownable {
     // We inherit from two contracts: ERC20 to make it represent a fungible token, that can be traded
