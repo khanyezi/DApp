@@ -15,6 +15,7 @@ contract KhanyeziTokens is IERC20, Ownable {
     string internal constant name ;
     string internal constant symbol;
     uint internal decimals ;                // how divisable you want your coins to be
+    uint internal interest;
     address public SPV;                     // current address of token holder & borrower
     uint private totalSupply = 1000000;
     uint public price;
@@ -23,12 +24,15 @@ contract KhanyeziTokens is IERC20, Ownable {
     constructor(
       string _name,
       string _symbol,
+      uint _decimals,
+      uint _interest,
+      uint _price,
       uint256 _totalSupply,
       address _SPV
       ) {
         // the contract is constructed once
         require(_price > 0, "Price of the token need to be positive");
-        require(ownerAddress != address(0) && ownerAddress != address(this), "Wrong address");
+        require(_SPV != address(0) && _SPV != address(this), "Wrong address");
         
         require(_SPV != 0x0, "Wrong address");
 
@@ -36,6 +40,7 @@ contract KhanyeziTokens is IERC20, Ownable {
         name = _name;
         symbol = _symbol;
         decimals = _decimals;
+	interest = _interest;
 
         totalSupply = _totalSupply;                            //Update total supply
         SPV = _SPV;
