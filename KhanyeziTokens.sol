@@ -14,76 +14,31 @@ contract KhanyeziTokens is IERC20, Ownable {
     // token identifier
     string internal constant name ;
     string internal constant symbol;
-    uint internal decimals; // how divisable you want your coins to be
-    address public SPV; // current address of token holder & borrower
+    uint internal decimals ;                // how divisable you want your coins to be
+    address public SPV;                     // current address of token holder & borrower
     uint private totalSupply = 1000000;
-
-    /**
-    Actual logic data
-    */
-    uint256 public dayLength; //Number of seconds in a day
-    uint256 public loanTerm; //Loan term in days
-    uint256 public exchangeRate; //Exchange rate for Ether to loan coins
-    uint256 public initialSupply; //Keep record of Initial value of Loan
-    uint256 public loanActivation; //Timestamp the loan was funded
-
-    uint256 public interestRatePerCycle; //Interest rate per interest cycle
-    uint256 public interestCycleLength; //Total number of days per interest cycle
-
-    uint256 public totalInterestCycles; //Total number of interest cycles completed
-    uint256 public lastInterestCycle; //Keep record of Initial value of Loan
-
-    address public lender; //The address of the investor
-
-    uint256 public constant PERCENT_DIVISOR = 100;
+    uint public price;
 
 
     constructor(
       string _name,
       string _symbol,
-      uint256 _initialSupply,
       uint256 _totalSupply,
-      uint256 _exchangeRate,
-      uint256 _dayLength,
-      uint256 _loanTerm,
-      uint256 _loanCycle,
-      uint256 _interestRatePerCycle,
-      address _lender,
       address _SPV
       ) {
         // the contract is constructed once
         require(_price > 0, "Price of the token need to be positive");
         require(ownerAddress != address(0) && ownerAddress != address(this), "Wrong address");
-        require(_exchangeRate > 0, "exchneg rate muts be positive");
-        require(_initialAmount > 0, "can't be negative");
-        require(_dayLength > 0, "can't be negative");
-        require(_loanCycle > 0, "can't be negative");
-
-        require(_lender != 0x0, "Wrong address");
+        
         require(_SPV != 0x0, "Wrong address");
 
         price = _price;
         name = _name;
         symbol = _symbol;
-        interest = _interest;
         decimals = _decimals;
 
-        exchangeRate = _exchangeRate;                             // Exchange rate for the coins
-        initialSupply = _initialAmount.mul(exchangeRate);        // Update initial supply
-        totalSupply = initialSupply;                            //Update total supply
-        balances[_SPV] = initialSupply;                        // Give the creator all initial tokens
-
-        name = _tokenName;                                   // Amount of decimals for display purposes
-        symbol = _tokenSymbol;                              // Set the symbol for display purposes
-
-        dayLength = _dayLength;                             //Set the length of each day in seconds...For dev purposes
-        loanTerm = _loanTerm;                               //Set the number of days, for loan maturity
-        interestCycleLength = _loanCycle;                   //set the Interest cycle period
-        interestRatePerCycle = _interestRatePerCycle;                      //Set the Interest rate per cycle
-        lender = _lender;                             //set lender address
+        totalSupply = _totalSupply;                            //Update total supply
         SPV = _SPV;
-
-        Transfer(0, _SPV, totalSupply);        //Allow funding be tracked
     }
 
     constructor(string memory _totalSupply, string memory _SPV) public{
@@ -174,25 +129,11 @@ contract KhanyeziSenior is KhanyeziTokens {
 
     string internal constant name = "KhanyeziSenior";
     string internal constant symbol = "K_SEN";
+    uint internal interest = 0.6;
     uint internal decimals = 18; // how divisable you want your coins to be
     address public SPV; // current address of token holder & borrower
+    uint public price;
     uint private totalSupply = 0.75*1000000;
-
-    uint256 public dayLength; //Number of seconds in a day
-    uint256 public loanTerm; //Loan term in days
-    uint256 public exchangeRate; //Exchange rate for Ether to loan coins
-    uint256 public initialSupply; //Keep record of Initial value of Loan
-    uint256 public loanActivation; //Timestamp the loan was funded
-
-    uint256 public interestRatePerCycle; //Interest rate per interest cycle
-    uint256 public interestCycleLength; //Total number of days per interest cycle
-
-    uint256 public totalInterestCycles; //Total number of interest cycles completed
-    uint256 public lastInterestCycle; //Keep record of Initial value of Loan
-
-    address public lender; //The address of the investor
-
-    uint256 public constant PERCENT_DIVISOR = 100;
 }
 
 
@@ -202,27 +143,11 @@ contract KhanyeziMezzanine is KhanyeziTokens {
 // Middle tranche
     string internal constant name = "KhanyeziMezzanine";
     string internal constant symbol = "K_MEZ";
-    uint internal interest = 0.06;
+    uint internal interest = 0.11;
     uint internal decimals = 18; // how divisable you want your coins to be
-    address public ownerAddress; // current address of token holder
+    address public SPV; // current address of token holder
     uint public price;
     uint private totalSupply = 0.15*1000000;
-
-    uint256 public dayLength; //Number of seconds in a day
-    uint256 public loanTerm; //Loan term in days
-    uint256 public exchangeRate; //Exchange rate for Ether to loan coins
-    uint256 public initialSupply; //Keep record of Initial value of Loan
-    uint256 public loanActivation; //Timestamp the loan was funded
-
-    uint256 public interestRatePerCycle; //Interest rate per interest cycle
-    uint256 public interestCycleLength; //Total number of days per interest cycle
-
-    uint256 public totalInterestCycles; //Total number of interest cycles completed
-    uint256 public lastInterestCycle; //Keep record of Initial value of Loan
-
-    address public lender; //The address of the investor
-
-    uint256 public constant PERCENT_DIVISOR = 100;
 
 }
 
@@ -238,24 +163,5 @@ contract KhanyeziEquity is KhanyeziTokens {
     uint public price;
     uint private totalSupply = 0.1*1000000;
 
-    uint256 public dayLength; //Number of seconds in a day
-    uint256 public loanTerm; //Loan term in days
-    uint256 public exchangeRate; //Exchange rate for Ether to loan coins
-    uint256 public initialSupply; //Keep record of Initial value of Loan
-    uint256 public loanActivation; //Timestamp the loan was funded
-
-    uint256 public interestRatePerCycle; //Interest rate per interest cycle
-    uint256 public interestCycleLength; //Total number of days per interest cycle
-
-    uint256 public totalInterestCycles; //Total number of interest cycles completed
-    uint256 public lastInterestCycle; //Keep record of Initial value of Loan
-
-    address public lender; //The address of the investor
-
-    uint256 public constant PERCENT_DIVISOR = 100;
-
 }
-
-
-
 
