@@ -4,63 +4,65 @@ import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
 import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 
+
 contract KhanyeziTokens is IERC20, Ownable {
     // We inherit from two contracts: ERC20 to make it represent a fungible token, that can be traded
     // and Ownable to manage authorization and restrict certain methods to the owner only, like minting
     // Safe math is better for mathematical functions
     using SafeMath for uint256;
+    mapping (address => uint256) private _balances; // to obtain balance of a given address
+    mapping (address => mapping (address => uint256)) private _allowed; // the amount allowed to spend
+
 
     // token identifier
     string internal constant name ;
     string internal constant symbol;
-    uint internal decimals ;                // how divisable you want your coins to be
+    uint internal decimals;                // how divisable you want your coins to be
     uint internal interest;
     address public SPV;                     // current address of token holder & borrower
     uint private totalSupply = 1000000;
     uint public price;
 
 
-    constructor(
-      string _name,
-      string _symbol,
+    constructor (
+      string memory _name,
+      string memory _symbol,
       uint _decimals,
-      uint _interest,
       uint _price,
+      uint _interest,
       uint256 _totalSupply,
       address _SPV
-      ) {
+      ) public {
         // the contract is constructed once
         require(_price > 0, "Price of the token need to be positive");
         require(_SPV != address(0) && _SPV != address(this), "Wrong address");
-        
         require(_SPV != 0x0, "Wrong address");
 
         price = _price;
         name = _name;
         symbol = _symbol;
         decimals = _decimals;
-	interest = _interest;
+        interest = _interest;
 
         totalSupply = _totalSupply;                            //Update total supply
         SPV = _SPV;
     }
 
-    constructor(string memory _totalSupply, string memory _SPV) public{
+    constructor(address _SPV) public{
         _SPV = msg.sender;
-        totalSupply = _totalSupply;
     }
 
     constructor () public {
         // Initially assign all tokens to the contract's creator.
-        balanceOf[msg.sender].balance = _totalSupply;
+        balanceOf[msg.sender].balance = totalSupply;
         owner = msg.sender;
-        emit Transfer(address(0), msg.sender, _totalSupply);
+        emit Transfer(address(0), msg.sender, totalSupply);
     }
 
     // Total number of tokens in existence
     function totalSupply() external view returns (uint256) {
         return _totalSupply;
-   }
+    }
 
   // returns the account balance of another account with address _sender
     function balanceOf(address _owner) external view returns (uint256){
@@ -73,6 +75,7 @@ contract KhanyeziTokens is IERC20, Ownable {
    }
 
     // function to be used when investors buy the debt products form spv
+    
    function transfer(address _to, uint256 _amount) external returns (bool){
         require(_amount <= _balances[msg.sender], "not enough money");
         require(_to != address(0), "cant have that address");
@@ -85,6 +88,7 @@ contract KhanyeziTokens is IERC20, Ownable {
    }
 
     // function to use when repaying investor
+    
     function transferFrom(address _sender, address _to, uint256 _amount) external returns (bool){
         require(_amount <= _balances[_sender], "value must be less than balance");
         require(_amount <= _allowed[_sender][msg.sender], "value must be less than what is allowed to be sent");
@@ -94,11 +98,11 @@ contract KhanyeziTokens is IERC20, Ownable {
         _balances[_to] = _balances[_to].add(_amount);
 
         _allowed[_sender][msg.sender] = _allowed[_sender][msg.sender].sub(_amount); // subtract what is allowed to be spent
-        emit Transfer(_sender, _recipient, _amount);
+        emit Transfer(_sender, _to, _amount);
         return true;
    }
 
-    // function to check that the sender (investor) approves the transfer of the tokens
+    // function to check that the sender (investor) approves the transfer of the tokens by another address
     function approve(address _sender, uint256 _amount) external returns (bool){
         _allowed[msg.sender][_sender] = _amount;
         emit Approval(msg.sender, _sender, _amount);
@@ -106,23 +110,24 @@ contract KhanyeziTokens is IERC20, Ownable {
         }
 
     // function to be able to mint new coins
-    function _mint(address _account, uint256 _amount) internal {
+    function _mint(address _account, uint256 _amount) internal onlyOwner {
         require(_account != 0, "Account is not allowed to be account(0)");
 
         _totalSupply = _totalSupply.add(_amount);
         _balances[_account] = _balances[_account].add(_amount);
-        Mint(_to, _amount);
         emit Transfer(address(0), _account, _amount);
   }
 
+  // may not need the functions below?
+  
     function name() public view returns (string memory){
-        return _name;
+        return name;
     }
 	function symbol() public view returns (string memory){
-        return _symbol;
+        return symbol;
     }
 	function decimals() public view returns (uint8){
-        return _decimals;
+        return decimals;
     }
 
 }
@@ -168,4 +173,5 @@ contract KhanyeziEquity is KhanyeziTokens {
     uint private totalSupply = 0.1*1000000;
 
 }
+
 
