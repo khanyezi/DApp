@@ -19,7 +19,7 @@ contract KhanyeziTokens is IERC20, Ownable {
     string internal constant symbol;
     uint internal decimals;                // how divisable you want your coins to be
     uint internal interest;
-    address public SPV;                     // current address of token holder & borrower
+    address public SPV;                     // current address of token owner
     uint private totalSupply;
     uint public price;
 
@@ -120,47 +120,17 @@ contract KhanyeziTokens is IERC20, Ownable {
 
 }
 
-/* don't need this
-contract KhanyeziSenior is KhanyeziTokens {
+/* 
+We then deply 3 different contracts to represent each branch in 2_khanyeziToken_deploy.js as such:
+by defining each of the state variables
 
-// First create the senior tranche token
+module.exports = async function(deployer) {
+  const KhanyeziSenior = await deployer.deploy(KhanyeziTokens, "KhanyeziSenior", "K_SEN", 0, 0.06, 0.75*1000000 , 1);
+  const KhanyeziMezzanine = await deployer.deploy(KhanyeziTokens, "KhanyeziMezzanine", "K_MEZ", 0, 0.11, 0.15*1000000 , 1);;
+  const KhanyeziEquity = await deployer.deploy(KhanyeziTokens, "KhanyeziEquity", "K_EQT", 0, 0, 0.1*1000000, 1);
+  await deployer.deploy(InvestmentVehicle, KhanyeziSenior.address, KhanyeziMezzanine.address, KhanyeziEquity.address)
+};
 
-    string internal constant name = "KhanyeziSenior";
-    string internal constant symbol = "K_SEN";
-    uint internal interest = 0.6;
-    uint internal decimals = 18; // how divisable you want your coins to be
-    address public SPV; // current address of token holder & borrower
-    uint public price;
-    uint private totalSupply = 0.75*1000000;
-}
-
-
-
-contract KhanyeziMezzanine is KhanyeziTokens {
-
-// Middle tranche
-    string internal constant name = "KhanyeziMezzanine";
-    string internal constant symbol = "K_MEZ";
-    uint internal interest = 0.11;
-    uint internal decimals = 18; // how divisable you want your coins to be
-    address public SPV; // current address of token holder
-    uint public price;
-    uint private totalSupply = 0.15*1000000;
-
-}
-
-
-contract KhanyeziEquity is KhanyeziTokens {
-
-// Equity tranche
-    string internal constant name = "KhanyeziEquity";
-    string internal constant symbol = "K_EQT";
-    uint internal interest = 0;
-    uint internal decimals = 18; // how divisable you want your coins to be
-    address public ownerAddress; // current address of token holder
-    uint public price;
-    uint private totalSupply = 0.1*1000000;
-
-}
+where the InvestmentVehicle can then use the tokens by knowing the tokens' adresses
 
 */
