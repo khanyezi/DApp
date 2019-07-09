@@ -1,5 +1,3 @@
-/*Author: Julika P */
-
 pragma solidity ^0.5;
 
 import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
