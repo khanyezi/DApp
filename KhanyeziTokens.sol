@@ -28,7 +28,7 @@ contract KhanyeziTokens is IERC20, Ownable {
     // token identifier
     string public _name ;
     string public _symbol;
-    uint public _decimals;                // how divisable you want your coins to be
+    uint8 public _decimals;                // how divisable you want your coins to be
     uint public _interest;
     address public _SPV;                     // current address of token holder & borrower
     uint public _totalSupply;
@@ -38,7 +38,7 @@ contract KhanyeziTokens is IERC20, Ownable {
     constructor (
       string memory name,
       string memory symbol,
-      uint decimals,
+      uint8 decimals,
       uint interest,
       uint256 totalSupply,
       uint price
@@ -130,7 +130,7 @@ contract KhanyeziTokens is IERC20, Ownable {
 	function symbol() public view returns (string memory){
         return _symbol;
     }
-	function decimals() public view returns (uint){
+	function decimals() public view returns (uint8){
         return _decimals;
     }
     function interest() public view returns (uint){
@@ -142,6 +142,7 @@ contract KhanyeziTokens is IERC20, Ownable {
 
 
 }
+
 
 
 /* 
