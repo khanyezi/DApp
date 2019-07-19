@@ -1,5 +1,5 @@
 /*Author: Nyasha C */
-//test
+//test2
 pragma solidity ^0.5.0;
 
 /* This contract stores the following:
