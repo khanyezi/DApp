@@ -12,16 +12,16 @@ contract KhanyeziTokens is IERC20, Ownable {
     using SafeMath for uint256;
     mapping (address => uint256) private _balances; // to obtain balance of a given address
     mapping (address => mapping (address => uint256)) private _allowed; // the amount allowed to spend
-   
+
    struct Investment {
         uint256 amount;
         uint256 date;
     }
-    
+
     // Investments[] public investments;
-   
+
     mapping (address => Investment) private _investments;
-    
+
     // include another struct to add the details of the investor and not just the balances
 
 
@@ -68,7 +68,7 @@ contract KhanyeziTokens is IERC20, Ownable {
     function balanceOf(address _owner) public view returns (uint256) {
        return _balances[_owner];
    }
-   
+
    // this function return both the amount and the date the investor made the investment
    function InvestorInfo(address _owner) public view returns (uint256, uint256) {
        return (_investments[_owner].amount, _investments[_owner].date);
@@ -87,10 +87,10 @@ contract KhanyeziTokens is IERC20, Ownable {
         emit Transfer(msg.sender, _to, _amount); // msg.sender may need to tx.origin
         _balances[msg.sender] = _balances[msg.sender].sub(_amount);
         _balances[_to] = _balances[_to].add(_amount);
-        
+
         _investments[_to].amount = _amount;
         _investments[_to].date = now;
-        
+
         return true;
    }
 
@@ -142,20 +142,3 @@ contract KhanyeziTokens is IERC20, Ownable {
 
 
 }
-
-
-
-/* 
-We then deply 3 different contracts to represent each branch in 2_khanyeziToken_deploy.js as such:
-by defining each of the state variables
-
-module.exports = async function(deployer) {
-  const KhanyeziSenior = await deployer.deploy(KhanyeziTokens, "KhanyeziSenior", "K_SEN", 0, 0.06, 0.75*1000000 , 1);
-  const KhanyeziMezzanine = await deployer.deploy(KhanyeziTokens, "KhanyeziMezzanine", "K_MEZ", 0, 0.11, 0.15*1000000 , 1);;
-  const KhanyeziEquity = await deployer.deploy(KhanyeziTokens, "KhanyeziEquity", "K_EQT", 0, 0, 0.1*1000000, 1);
-  await deployer.deploy(InvestmentVehicle, KhanyeziSenior.address, KhanyeziMezzanine.address, KhanyeziEquity.address)
-};
-
-where the InvestmentVehicle can then use the tokens by knowing the tokens' adresses
-
-*/

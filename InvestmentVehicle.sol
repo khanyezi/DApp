@@ -1,78 +1,94 @@
 pragma solidity ^0.5;
 
-import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
-import "../contracts/KhanyeziTokens.sol";
+import "./KhanyeziTokens.sol";
 
-contract InvestmentVehicle is Ownable, KhanyeziTokens {
+contract InvestmentVehicle {
 
-/* Defines our interface to the contract. */
-    address KhanyeziSenior;
-/* Our handle to the token contract. */
+/* Defines interface to the contract. */
 
-    constructor(address _token) public {
-        KhanyeziSenior = _token;
-    }
-
-// adding 3 arrays, one for each tranche
-// define the struct Song
-  struct Investor {
-    address payable InvestorAddrs;
-    uint amountInvested;
-    uint date;
-  }
-
-    Investor[] public investors;
-    
-    uint public TotalInvestors;
+    KhanyeziTokens khanyeziTokens;
 
     // call the owner of the contract SPV
     address payable private _SPV; // will send funds to the wallet
 
-    event Investment(
+    constructor(address _token) public {
+       khanyeziTokens = KhanyeziTokens(_token);
+    }
+
+    uint public TotalInvestors;
+
+    struct Investor {
+        address InvestorAddrs;
+        uint256 registerDate;
+    }
+
+    Investor[] public investors;
+
+    // owner address to investor number "index"
+    mapping (address => uint256) public _AddrsToInvestorNo;
+
+
+    event InvestorTransaction (
         address _OwnerAddrs,
         uint _amount,
-        uint _date
+        uint _depositeDate
     );
 
-    // register investment
-    function registerInvestor(uint _amountInvested, uint _date) public onlyOwner returns(uint) {
+
+    // register investment, by updating the Investment struct from the KhanyeziTokens contract
+    function registerInvestor() public returns(uint) {
         // get an instance of Investor using the input variables and push into the array of songs, returns the id
-        uint index = investors.push(Investor(msg.sender, _amountInvested, _date)) - 1;
-        // add the msg.sender to the array of buyer addresses corresponding to the song id
-        investors[index].push(msg.sender);
+
+        uint index = investors.push(Investor(msg.sender, now)) - 1;
+
+        _AddrsToInvestorNo[msg.sender] = index; // to get the index for an address
         // return the investor id
         return index;
   }
 
     /* Returns the total number of holders of this currency. */
     function TokenHolderCount() public view returns (uint256) {
-        return investors.length;
-    }
-
-    /* Gets the token holder at the specified index. */
-    function TokenHolder(uint256 _index) public view returns (address) {
-        return investors[_index];
+        investors.length;
     }
 
     // public so that investors can call the function and buy tokens
-    function buyTokens(uint _amount) public payable {
-        require(msg.value == _amount, "value sent by address must equal amount of tokens");
-        require(totalSupply() >= _amount, "There must be enough tokens on sale");
+    function buyTokens(uint256 _amount) public payable {
+        require(msg.value >= _amount, "not enough funds sent");
+        require(khanyeziTokens.totalSupply() >= _amount, "There must be enough tokens on sale");
 
-        _tokens = KhanyeziTokens(address(KhanyeziSenior));
         // call the transfer function to transfer from tokens_contract specfic token to investor (msg.sender)
-        _tokens.transfer(msg.sender, _amount);
-        // _balances[msg.sender].add(_amount); -> this should be done in the transfer function
+        khanyeziTokens.transfer(msg.sender, _amount);
+
         _SPV.transfer(msg.value);
-        // buy a token (_amount = amount of tokens bought)
-        // with ether for now and send ether to SPV wallet
-        
-        _date = now;
-        emit Investment(msg.sender, _amount, _date);
+
+        //send ether to SPV wallet
+
+        uint256 _depositeDate = now;
+        emit InvestorTransaction(msg.sender, _amount, _depositeDate);
 
     }
 
+        // check investment 
 
+    /*
+
+    function CurrentInvestmentValue() public {
+        // first need to see whether this is a registered address
+        require(_AddrsToInvestorNo[msg.sender] != 0, "Not an investor");
+
+        //uint256 _InvestmentDate = khanyeziTokens._investments[msg.sender].depositeDate;
+        uint256 _InvestmentAmount = khanyeziTokens._investments[msg.sender].amount;
+        uint256 _interest = khanyeziTokens.interest();
+
+        uint256 _timeNow = now;
+        uint256 _approximateMonths = (_timeNow - _InvestmentDate) / 3.85802469136e-7;
+
+        uint256 CurrentValue = _InvestmentAmount*(1 + _interest/100)*_approximateMonths;
+        // can use message.sender as we want to map the address that calls the function
+        return CurrentValue;
+    }
+
+*/
 
 
 }
