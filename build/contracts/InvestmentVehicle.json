@@ -254,7 +254,7 @@
         "id": 2,
         "nodeType": "ImportDirective",
         "scope": 194,
-        "sourceUnit": 649,
+        "sourceUnit": 648,
         "src": "23:30:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -282,7 +282,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+              "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
               "typeString": "contract KhanyeziTokens"
             },
             "typeName": {
@@ -290,10 +290,10 @@
               "id": 3,
               "name": "KhanyeziTokens",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 648,
+              "referencedDeclaration": 647,
               "src": "131:14:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                 "typeString": "contract KhanyeziTokens"
               }
             },
@@ -376,7 +376,7 @@
                       "referencedDeclaration": 4,
                       "src": "447:14:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                        "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                         "typeString": "contract KhanyeziTokens"
                       }
                     },
@@ -410,10 +410,10 @@
                         "name": "KhanyeziTokens",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 648,
+                        "referencedDeclaration": 647,
                         "src": "464:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_KhanyeziTokens_$648_$",
+                          "typeIdentifier": "t_type$_t_contract$_KhanyeziTokens_$647_$",
                           "typeString": "type(contract KhanyeziTokens)"
                         }
                       },
@@ -427,13 +427,13 @@
                       "nodeType": "FunctionCall",
                       "src": "464:22:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                        "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                         "typeString": "contract KhanyeziTokens"
                       }
                     },
                     "src": "447:39:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                      "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                       "typeString": "contract KhanyeziTokens"
                     }
                   },
@@ -902,7 +902,7 @@
                                 "name": "msg",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 865,
+                                "referencedDeclaration": 864,
                                 "src": "1244:3:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_message",
@@ -929,7 +929,7 @@
                               "name": "now",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 867,
+                              "referencedDeclaration": 866,
                               "src": "1256:3:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -1083,7 +1083,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 865,
+                          "referencedDeclaration": 864,
                           "src": "1303:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1408,7 +1408,7 @@
                         "referencedDeclaration": 4,
                         "src": "1771:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                          "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                           "typeString": "contract KhanyeziTokens"
                         }
                       },
@@ -1419,7 +1419,7 @@
                       "lValueRequested": false,
                       "memberName": "totalSupply",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 312,
+                      "referencedDeclaration": 311,
                       "src": "1771:26:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -1528,7 +1528,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 865,
+                            "referencedDeclaration": 864,
                             "src": "2013:3:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -1604,10 +1604,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        868,
-                        869
+                        867,
+                        868
                       ],
-                      "referencedDeclaration": 869,
+                      "referencedDeclaration": 868,
                       "src": "2005:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -1672,7 +1672,7 @@
                                 "referencedDeclaration": 4,
                                 "src": "2077:14:0",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                                  "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                                   "typeString": "contract KhanyeziTokens"
                                 }
                               },
@@ -1683,7 +1683,7 @@
                               "lValueRequested": false,
                               "memberName": "totalSupply",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 312,
+                              "referencedDeclaration": 311,
                               "src": "2077:26:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -1780,10 +1780,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        868,
-                        869
+                        867,
+                        868
                       ],
-                      "referencedDeclaration": 869,
+                      "referencedDeclaration": 868,
                       "src": "2069:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -1820,7 +1820,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 865,
+                          "referencedDeclaration": 864,
                           "src": "2312:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -1875,7 +1875,7 @@
                         "referencedDeclaration": 4,
                         "src": "2292:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                          "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                           "typeString": "contract KhanyeziTokens"
                         }
                       },
@@ -1886,7 +1886,7 @@
                       "lValueRequested": false,
                       "memberName": "mint",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 607,
+                      "referencedDeclaration": 606,
                       "src": "2292:19:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -1923,7 +1923,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 865,
+                          "referencedDeclaration": 864,
                           "src": "2361:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -2036,7 +2036,7 @@
                     "name": "now",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 867,
+                    "referencedDeclaration": 866,
                     "src": "2446:3:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -2058,7 +2058,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 865,
+                          "referencedDeclaration": 864,
                           "src": "2484:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -2222,7 +2222,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 865,
+                          "referencedDeclaration": 864,
                           "src": "2807:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -2260,7 +2260,7 @@
                         "referencedDeclaration": 4,
                         "src": "2777:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                          "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                           "typeString": "contract KhanyeziTokens"
                         }
                       },
@@ -2271,7 +2271,7 @@
                       "lValueRequested": false,
                       "memberName": "InvestorAmount",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 337,
+                      "referencedDeclaration": 336,
                       "src": "2777:29:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -2369,7 +2369,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 865,
+                          "referencedDeclaration": 864,
                           "src": "2938:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -2407,7 +2407,7 @@
                         "referencedDeclaration": 4,
                         "src": "2910:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                          "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                           "typeString": "contract KhanyeziTokens"
                         }
                       },
@@ -2418,7 +2418,7 @@
                       "lValueRequested": false,
                       "memberName": "InvestorDate",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 350,
+                      "referencedDeclaration": 349,
                       "src": "2910:27:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -2551,7 +2551,7 @@
                         "referencedDeclaration": 4,
                         "src": "3042:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                          "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                           "typeString": "contract KhanyeziTokens"
                         }
                       },
@@ -2562,7 +2562,7 @@
                       "lValueRequested": false,
                       "memberName": "interest",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 639,
+                      "referencedDeclaration": 638,
                       "src": "3042:23:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -2692,7 +2692,7 @@
         "id": 2,
         "nodeType": "ImportDirective",
         "scope": 194,
-        "sourceUnit": 649,
+        "sourceUnit": 648,
         "src": "23:30:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -2720,7 +2720,7 @@
             "stateVariable": true,
             "storageLocation": "default",
             "typeDescriptions": {
-              "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+              "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
               "typeString": "contract KhanyeziTokens"
             },
             "typeName": {
@@ -2728,10 +2728,10 @@
               "id": 3,
               "name": "KhanyeziTokens",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 648,
+              "referencedDeclaration": 647,
               "src": "131:14:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                 "typeString": "contract KhanyeziTokens"
               }
             },
@@ -2814,7 +2814,7 @@
                       "referencedDeclaration": 4,
                       "src": "447:14:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                        "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                         "typeString": "contract KhanyeziTokens"
                       }
                     },
@@ -2848,10 +2848,10 @@
                         "name": "KhanyeziTokens",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 648,
+                        "referencedDeclaration": 647,
                         "src": "464:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_type$_t_contract$_KhanyeziTokens_$648_$",
+                          "typeIdentifier": "t_type$_t_contract$_KhanyeziTokens_$647_$",
                           "typeString": "type(contract KhanyeziTokens)"
                         }
                       },
@@ -2865,13 +2865,13 @@
                       "nodeType": "FunctionCall",
                       "src": "464:22:0",
                       "typeDescriptions": {
-                        "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                        "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                         "typeString": "contract KhanyeziTokens"
                       }
                     },
                     "src": "447:39:0",
                     "typeDescriptions": {
-                      "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                      "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                       "typeString": "contract KhanyeziTokens"
                     }
                   },
@@ -3340,7 +3340,7 @@
                                 "name": "msg",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 865,
+                                "referencedDeclaration": 864,
                                 "src": "1244:3:0",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_message",
@@ -3367,7 +3367,7 @@
                               "name": "now",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 867,
+                              "referencedDeclaration": 866,
                               "src": "1256:3:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_uint256",
@@ -3521,7 +3521,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 865,
+                          "referencedDeclaration": 864,
                           "src": "1303:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -3846,7 +3846,7 @@
                         "referencedDeclaration": 4,
                         "src": "1771:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                          "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                           "typeString": "contract KhanyeziTokens"
                         }
                       },
@@ -3857,7 +3857,7 @@
                       "lValueRequested": false,
                       "memberName": "totalSupply",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 312,
+                      "referencedDeclaration": 311,
                       "src": "1771:26:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -3966,7 +3966,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 865,
+                            "referencedDeclaration": 864,
                             "src": "2013:3:0",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -4042,10 +4042,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        868,
-                        869
+                        867,
+                        868
                       ],
-                      "referencedDeclaration": 869,
+                      "referencedDeclaration": 868,
                       "src": "2005:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -4110,7 +4110,7 @@
                                 "referencedDeclaration": 4,
                                 "src": "2077:14:0",
                                 "typeDescriptions": {
-                                  "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                                  "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                                   "typeString": "contract KhanyeziTokens"
                                 }
                               },
@@ -4121,7 +4121,7 @@
                               "lValueRequested": false,
                               "memberName": "totalSupply",
                               "nodeType": "MemberAccess",
-                              "referencedDeclaration": 312,
+                              "referencedDeclaration": 311,
                               "src": "2077:26:0",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -4218,10 +4218,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        868,
-                        869
+                        867,
+                        868
                       ],
-                      "referencedDeclaration": 869,
+                      "referencedDeclaration": 868,
                       "src": "2069:7:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -4258,7 +4258,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 865,
+                          "referencedDeclaration": 864,
                           "src": "2312:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -4313,7 +4313,7 @@
                         "referencedDeclaration": 4,
                         "src": "2292:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                          "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                           "typeString": "contract KhanyeziTokens"
                         }
                       },
@@ -4324,7 +4324,7 @@
                       "lValueRequested": false,
                       "memberName": "mint",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 607,
+                      "referencedDeclaration": 606,
                       "src": "2292:19:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -4361,7 +4361,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 865,
+                          "referencedDeclaration": 864,
                           "src": "2361:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -4474,7 +4474,7 @@
                     "name": "now",
                     "nodeType": "Identifier",
                     "overloadedDeclarations": [],
-                    "referencedDeclaration": 867,
+                    "referencedDeclaration": 866,
                     "src": "2446:3:0",
                     "typeDescriptions": {
                       "typeIdentifier": "t_uint256",
@@ -4496,7 +4496,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 865,
+                          "referencedDeclaration": 864,
                           "src": "2484:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -4660,7 +4660,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 865,
+                          "referencedDeclaration": 864,
                           "src": "2807:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -4698,7 +4698,7 @@
                         "referencedDeclaration": 4,
                         "src": "2777:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                          "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                           "typeString": "contract KhanyeziTokens"
                         }
                       },
@@ -4709,7 +4709,7 @@
                       "lValueRequested": false,
                       "memberName": "InvestorAmount",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 337,
+                      "referencedDeclaration": 336,
                       "src": "2777:29:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -4807,7 +4807,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 865,
+                          "referencedDeclaration": 864,
                           "src": "2938:3:0",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -4845,7 +4845,7 @@
                         "referencedDeclaration": 4,
                         "src": "2910:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                          "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                           "typeString": "contract KhanyeziTokens"
                         }
                       },
@@ -4856,7 +4856,7 @@
                       "lValueRequested": false,
                       "memberName": "InvestorDate",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 350,
+                      "referencedDeclaration": 349,
                       "src": "2910:27:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
@@ -4989,7 +4989,7 @@
                         "referencedDeclaration": 4,
                         "src": "3042:14:0",
                         "typeDescriptions": {
-                          "typeIdentifier": "t_contract$_KhanyeziTokens_$648",
+                          "typeIdentifier": "t_contract$_KhanyeziTokens_$647",
                           "typeString": "contract KhanyeziTokens"
                         }
                       },
@@ -5000,7 +5000,7 @@
                       "lValueRequested": false,
                       "memberName": "interest",
                       "nodeType": "MemberAccess",
-                      "referencedDeclaration": 639,
+                      "referencedDeclaration": 638,
                       "src": "3042:23:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_external_view$__$returns$_t_uint256_$",
@@ -5110,7 +5110,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.11",
-  "updatedAt": "2019-07-22T14:14:02.176Z",
+  "updatedAt": "2019-07-22T14:58:47.978Z",
   "devdoc": {
     "methods": {}
   },
