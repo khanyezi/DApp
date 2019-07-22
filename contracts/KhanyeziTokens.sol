@@ -1,11 +1,11 @@
-pragma solidity ^0.5;
+pragma solidity ^0.5.0;
 
 import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
-import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
+// import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 
-contract KhanyeziTokens is IERC20, Ownable {
+contract KhanyeziTokens is IERC20 {
     // We inherit from two contracts: ERC20 to make it represent a fungible token, that can be traded
     // and Ownable to manage authorization and restrict certain methods to the owner only, like minting
     // Safe math is better for mathematical functions
@@ -20,7 +20,7 @@ contract KhanyeziTokens is IERC20, Ownable {
 
     // Investments[] public investments;
 
-    mapping (address => Investment) private _investments;
+    mapping (address => Investment) public _investments;
 
     // include another struct to add the details of the investor and not just the balances
 
@@ -70,9 +70,15 @@ contract KhanyeziTokens is IERC20, Ownable {
    }
 
    // this function return both the amount and the date the investor made the investment
-   function InvestorInfo(address _owner) public view returns (uint256, uint256) {
-       return (_investments[_owner].amount, _investments[_owner].date);
+   function InvestorAmount(address _owner) public view returns (uint256) {
+       return _investments[_owner].amount;
    }
+   
+   function InvestorDate(address _owner) public view returns (uint256) {
+       return _investments[_owner].date;
+   }
+   
+   
 
    // Function to check the amount of tokens that an owner("sender") allowed to a recipient.
     function allowance(address _owner, address _to) public view returns (uint256){
@@ -116,11 +122,15 @@ contract KhanyeziTokens is IERC20, Ownable {
    }
 
     // function to be able to mint new coins
-    function mint(address _account, uint256 _amount) public onlyOwner {
-        require(_account != address(0), "Account is not allowed to be account(0)");
+    function mint(address _account, uint256 _amount) public {
+        // require() add require function that only the creator of the contract can call this
+        // create a require function so that only the investment contract can call this function
 
         _totalSupply = _totalSupply.add(_amount);
         _balances[_account] = _balances[_account].add(_amount); // may need to use tx.origin
+        
+        _investments[_account].amount = _amount;
+        _investments[_account].date = now;
         emit Transfer(address(0), _account, _amount);
   }
 
