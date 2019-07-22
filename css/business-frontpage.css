@@ -11,7 +11,7 @@ body, html {
 	font-family: Poppins-Regular, sans-serif;
 }
 .bg-primary {
-  background-color: #0072fff2!important;
+  background-color: #4158d0 ;
 
 } 
 
@@ -29,3 +29,12 @@ body, html {
 .h2-pg {
   color : White
 }
+
+.h2-wwd {
+  color : #4158d0;
+}
+
+.p-wwd {
+  color : #4158d0;
+}
+
