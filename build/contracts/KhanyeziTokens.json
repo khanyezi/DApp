@@ -12448,10 +12448,57 @@
   },
   "networks": {
     "3": {
-      "events": {},
+      "events": {
+        "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Transfer",
+          "type": "event",
+          "signature": "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef"
+        },
+        "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925": {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "name": "owner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "name": "spender",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "name": "value",
+              "type": "uint256"
+            }
+          ],
+          "name": "Approval",
+          "type": "event",
+          "signature": "0x8c5be1e5ebec7d5bd14f71427d1e84f3dd0314c0f7b2291e5b200ac8c7c3b925"
+        }
+      },
       "links": {},
-      "address": "0xB0E8eA20CD462521a036AA733B2efa8Dda9E4881",
-      "transactionHash": "0x43ddb6b72f2e49a2be02ba41c88ff6ec4ed09c37eff96047326f36a05fd7e958"
+      "address": "0x0bC030d32492e040320BA599125AF24580D1bb46",
+      "transactionHash": "0xfa9011a3e1552373731b7c49eee33d1499b574e390ca97fbfdc8204eb7950fd2"
     },
     "5777": {
       "events": {
@@ -12508,7 +12555,7 @@
     }
   },
   "schemaVersion": "3.0.11",
-  "updatedAt": "2019-07-23T13:38:01.366Z",
+  "updatedAt": "2019-07-23T16:26:10.507Z",
   "devdoc": {
     "methods": {}
   },
