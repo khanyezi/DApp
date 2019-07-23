@@ -3,7 +3,7 @@ const InvestmentVehicle = artifacts.require("./InvestmentVehicle.sol")
 
 module.exports = function(deployer) {
   deployer.deploy(KhanyeziTokens, "KhanyeziTokens", "KZT", 8, 7, 0, 1).then((contractInstance) => {
-    deployer.deploy(InvestmentVehicle, contractInstance.address, 1000);
+    deployer.deploy(InvestmentVehicle, contractInstance.address, 1000, 8, 18, 60, 6);
   })
 
   // await 
