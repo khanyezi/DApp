@@ -134,18 +134,11 @@ contract KhanyeziTokens is IERC20 {
         emit Transfer(address(0), _account, _amount);
   }
 
-    function _burn(address account, uint256 value) internal {
-        require(account != address(0));
+    function burn(uint256 value) public {
+        // require(account != address(0));
 
         _totalSupply = _totalSupply.sub(value);
-        _balances[account] = _balances[account].sub(value); // should burn from all accounts
-        emit Transfer(account, address(0), value);
-    }
-
-// burn from investors as money comes in
-    function _burnFrom(address account, uint256 value) internal {
-        _allowed[account][msg.sender] = _allowed[account][msg.sender].sub(value);
-        _burn(account, value);
+        // _balances[account] = _balances[account].sub(value); // should burn from all accounts
     }
 
     function name() public view returns (string memory){

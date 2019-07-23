@@ -17,6 +17,7 @@ contract InvestmentVehicle {
     uint _studentTerm;
     // uint gracePeriod; /* Will be used to create data from which repayments are expected - dates can be in a separate contract */
     uint _studentLoanAmount;
+    uint _studentRepayment;
 
     // make constants for now
 
@@ -24,13 +25,15 @@ contract InvestmentVehicle {
     uint256 _tokensNeeded,
     uint256 studentInterest,
     uint256 studentTerm,
-    uint256 studentLoanAmount) public
+    uint256 studentLoanAmount,
+    uint256 studentRepayment) public
     {
        khanyeziTokens = KhanyeziTokens(_token);
        _totalAmount = _tokensNeeded;
        _studentInterest = studentInterest;
        _studentTerm = studentTerm;
        _studentLoanAmount = studentLoanAmount;
+       _studentRepayment = studentRepayment;
     }
 
     uint public TotalInvestors;
@@ -43,14 +46,16 @@ contract InvestmentVehicle {
     struct Student {
         address StudentAddrs;
         uint256 applicationDate;
+        uint256 _studentLoanAmount;
+        uint256 loanStatus; // +1 per late payment (monthly)
+        uint256 RepaymentsLeft;
     }
 
     Investor[] public investors;
-    Student[] public students;
 
     // owner address to investor number "index"
     mapping (address => uint256) public _AddrsToInvestorNo;
-    mapping (address => uint256) public _AddrsToStudentNo;
+    mapping (address => Student) public _students;
 
     event InvestorTransaction (
         address OwnerAddrs,
@@ -60,27 +65,18 @@ contract InvestmentVehicle {
 
     event StundentTransaction (
         address OwnerAddrs,
-        uint repaymentAmount,
-        uint depositeDate
+        uint256 _studentLoanAmount,
+        uint256 RepaymentsLeft,
+        uint256 loanStatus
     );
-
 
 
     // register investment, by updating the Investment struct from the KhanyeziTokens contract
     function registerInvestor() public returns(uint) {
         // get an instance of Investor using the input variables and push into the array of investors, returns the index
         uint index = investors.push(Investor(msg.sender, now)) - 1;
-        
-        _AddrsToInvestorNo[msg.sender] = index; // to get the index for an address
-        // return the investor id
-        return index;
-  }
-
-  function registerStudent() public returns(uint) {
-       // get an instance of Student using the input variables and push into the array of students, returns the index
-        uint index = students.push(Student(msg.sender, now)) - 1;
     
-        _AddrsToStudentNo[msg.sender] = index; // to get the index for an address
+        _AddrsToInvestorNo[msg.sender] = index; // to get the index for an address
         // return the investor id
         return index;
   }
@@ -89,11 +85,6 @@ contract InvestmentVehicle {
     function InvestorCount() public view returns (uint256) {
         return investors.length;
     }
-
-    function StudnetCount() public view returns (uint256) {
-        return students.length;
-    }
-
     
     function totalTokensNeeded() public view returns (uint256) {
         return _totalAmount;
@@ -102,6 +93,10 @@ contract InvestmentVehicle {
     function totalSupply() public view returns (uint256) {
         return khanyeziTokens.totalSupply();
     }
+
+    function StundentLoanAmount() public view returns (uint256) {
+       return _students[msg.sender]._studentLoanAmount;
+   }
     
     // public so that investors can call the function and buy tokens
     // as the investor purchases tokens, tokens are minted
@@ -137,6 +132,34 @@ contract InvestmentVehicle {
     function interest() public view returns (uint256) {
         uint256 _interest = khanyeziTokens.interest();
         return _interest;
+    }
+
+    /* repayment function */
+    /* Tracking and transferring repayments */
+    /* Returns the outstanding balance after payment was made*/
+    /* Calculates next payment due and the date */
+    /* Keeps track of payment shortfalls and underpayments*/
+
+    function repayment(uint _amount) public returns (uint256){
+        require(_students[msg.sender]._studentLoanAmount != 0, "no more repayments due");
+        _students[msg.sender]._studentLoanAmount = _students[msg.sender]._studentLoanAmount - _amount;
+        _students[msg.sender].RepaymentsLeft = _students[msg.sender].RepaymentsLeft - _amount;
+
+        if (_amount < _studentRepayment) { /* if there is a shortfall on the repayment */
+            _students[msg.sender].loanStatus = _students[msg.sender].loanStatus + 1;
+        }
+
+        if (_students[msg.sender]._studentLoanAmount == 0){
+            _studentRepayment = 0;
+        }
+
+        khanyeziTokens.burn(_amount);
+
+        uint256 repaymentsLeft = _students[msg.sender].RepaymentsLeft;
+        uint256 loanStatus = _students[msg.sender].loanStatus;
+
+        emit StundentTransaction (msg.sender, _studentLoanAmount, repaymentsLeft, loanStatus);
+
     }
 
 
