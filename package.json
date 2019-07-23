@@ -1,4 +1,45 @@
 {
+<<<<<<< HEAD
+    "title": "Business Frontpage",
+    "name": "startbootstrap-business-frontpage",
+    "version": "4.2.1",
+    "scripts": {
+        "start": "node_modules/.bin/gulp watch"
+    },
+    "description": "A simple business HTML landing page built with Bootstrap",
+    "keywords": [
+        "css",
+        "sass",
+        "html",
+        "responsive",
+        "theme",
+        "template"
+    ],
+    "homepage": "https://startbootstrap.com/template-overviews/business-frontpage",
+    "bugs": {
+        "url": "https://github.com/BlackrockDigital/startbootstrap-business-frontpage/issues",
+        "email": "feedback@startbootstrap.com"
+    },
+    "license": "MIT",
+    "author": "Start Bootstrap",
+    "contributors": [
+        "David Miller (http://davidmiller.io/)"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/BlackrockDigital/startbootstrap-business-frontpage.git"
+    },
+    "dependencies": {
+        "bootstrap": "4.3.1",
+        "jquery": "3.4.1"
+    },
+    "devDependencies": {
+        "browser-sync": "2.26.7",
+        "del": "^4.1.1",
+        "gulp": "4.0.2",
+        "merge-stream": "2.0.0"
+    }
+=======
   "name": "ls",
   "version": "1.0.0",
   "description": "",
@@ -15,4 +56,5 @@
     "openzeppelin-solidity": "^2.3.0",
     "truffle-hdwallet-provider": "^1.0.14"
   }
+>>>>>>> f01d56b328105438dd42343756a7fb9577d1ff40
 }
