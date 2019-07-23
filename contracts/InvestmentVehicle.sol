@@ -13,35 +13,62 @@ contract InvestmentVehicle {
     address payable private _SPV; // will send funds to the wallet
     uint256 public _totalAmount; // set a total amount needed every year we deploy a new contract
     
-    constructor(address _token, uint256 _tokensNeeded) public {
+    uint _studentInterest;
+    uint _studentTerm;
+    // uint gracePeriod; /* Will be used to create data from which repayments are expected - dates can be in a separate contract */
+    uint _studentLoanAmount;
+
+    // make constants for now
+
+    constructor(address _token,
+    uint256 _tokensNeeded,
+    uint256 studentInterest,
+    uint256 studentTerm,
+    uint256 studentLoanAmount) public
+    {
        khanyeziTokens = KhanyeziTokens(_token);
        _totalAmount = _tokensNeeded;
+       _studentInterest = studentInterest;
+       _studentTerm = studentTerm;
+       _studentLoanAmount = studentLoanAmount;
     }
 
     uint public TotalInvestors;
-    
+
     struct Investor {
         address InvestorAddrs;
         uint256 registerDate;
     }
-    
+
+    struct Student {
+        address StudentAddrs;
+        uint256 applicationDate;
+    }
+
     Investor[] public investors;
-    
+    Student[] public students;
+
     // owner address to investor number "index"
     mapping (address => uint256) public _AddrsToInvestorNo;
+    mapping (address => uint256) public _AddrsToStudentNo;
 
-   
     event InvestorTransaction (
         address OwnerAddrs,
         uint amount,
         uint depositeDate
     );
-    
+
+    event StundentTransaction (
+        address OwnerAddrs,
+        uint repaymentAmount,
+        uint depositeDate
+    );
+
+
 
     // register investment, by updating the Investment struct from the KhanyeziTokens contract
     function registerInvestor() public returns(uint) {
-        // get an instance of Investor using the input variables and push into the array of songs, returns the id
-
+        // get an instance of Investor using the input variables and push into the array of investors, returns the index
         uint index = investors.push(Investor(msg.sender, now)) - 1;
         
         _AddrsToInvestorNo[msg.sender] = index; // to get the index for an address
@@ -49,10 +76,24 @@ contract InvestmentVehicle {
         return index;
   }
 
+  function registerStudent() public returns(uint) {
+       // get an instance of Student using the input variables and push into the array of students, returns the index
+        uint index = students.push(Student(msg.sender, now)) - 1;
+    
+        _AddrsToStudentNo[msg.sender] = index; // to get the index for an address
+        // return the investor id
+        return index;
+  }
+
     /* Returns the total number of holders of this currency. */
-    function TokenHolderCount() public view returns (uint256) {
+    function InvestorCount() public view returns (uint256) {
         return investors.length;
     }
+
+    function StudnetCount() public view returns (uint256) {
+        return students.length;
+    }
+
     
     function totalTokensNeeded() public view returns (uint256) {
         return _totalAmount;
@@ -77,7 +118,6 @@ contract InvestmentVehicle {
     
         uint256 _depositeDate = now;
         emit InvestorTransaction(msg.sender, _amount, _depositeDate);
-
     }
 
     // check investment 
@@ -98,6 +138,8 @@ contract InvestmentVehicle {
         uint256 _interest = khanyeziTokens.interest();
         return _interest;
     }
+
+
 
 
 }
