@@ -40,7 +40,7 @@
                                 <div class="input-group">
                                     <label class="label">Your Highest Qualification</label>
                                         <div class="rs-select2 js-select-simple select--no-search">
-                                            <select name="qualification">
+                                            <select id = "selectQualification" name="qualification">
                                                 <option disabled="disabled" selected="selected">Choose option</option>
                                                 <option>Bachelors Degree</option>
                                                 <option>Honours Degree</option>
@@ -56,23 +56,23 @@
                                     <label class="label">GPA</label>
                                     <div class="p-t-10">
                                             <label class="radio-container m-r-45">75 - 100
-                                                <input type="radio" checked="checked" name="gpa">
+                                                <input type="radio" id = "1" checked="checked" name="gpa">
                                                 <span class="checkmark"></span>
                                             </label>
                                             <label class="radio-container">70 - 74
-                                                <input type="radio" name="gpa">
+                                                <input type="radio" id = "2" name="gpa">
                                                 <span class="checkmark"></span>
                                             </label>
                                             <label class="radio-container">60 - 69
-                                                    <input type="radio" name="gpa">
+                                                    <input type="radio" id="3" name="gpa">
                                                     <span class="checkmark"></span>
                                                 </label>
                                             <label class="radio-container">50 - 59
-                                                        <input type="radio" name="gpa">
+                                                        <input type="radio" id="4" name="gpa">
                                                         <span class="checkmark"></span>
                                              </label>
                                              <label class="radio-container">49 or below
-                                                    <input type="radio" name="gpa">
+                                                    <input type="radio" id="5" name="gpa">
                                                     <span class="checkmark"></span>
                                          </label>
                                         </div>
@@ -227,8 +227,9 @@
                         
                     
                         <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                            <button id = "submit"class="btn btn--radius-2 btn--blue" type="submit"onclick="employabilityScore()">Submit </button>
                         </div>
+                        <h2 id="user"></h2>
                     </form>
                     </form>
                     <script>
@@ -246,11 +247,88 @@
           event.stopPropagation();
         }
         form.classList.add('was-validated');
-        
+
       }, false);
     });
   }, false);
 })();
+
+</script>
+<script>
+        /* Employability Score */
+ function employabilityScore() {
+
+    //Qualification
+    var selectedQualification = document.getElementById("selectQualification");
+    var strUser = selectedQualification.options[selectedQualification.selectedIndex].text;
+   // document.write(strUser);
+ 
+    switch(strUser) {
+        case "Bachelors Degree":
+            var qualification  =  10;
+            // return qualification;
+            console.log(qualification);
+        break;
+        case "Honours Degree":
+            var qualification  =  20;
+            console.log(qualification);
+           //  return qualification;
+        break;
+        case "Masters Degree":
+             var qualification  =  30;
+             console.log(qualification);
+         //  return qualification;
+         break;
+    }
+  //GPA 
+  var gpa = document.getElementById("selectQualification");
+
+  switch(strUser) {
+        case "Bachelors Degree":
+            var qualification  =  10;
+            // return qualification;
+            console.log(qualification);
+        break;
+        case "Honours Degree":
+            var qualification  =  20;
+            console.log(qualification);
+           //  return qualification;
+        break;
+        case "Masters Degree":
+             var qualification  =  30;
+             console.log(qualification);
+         //  return qualification;
+         break;
+    } 
+
+    if(document.getElementById('1').checked) {
+  //Male radio button is checked
+}else if(document.getElementById('2').checked) {
+  //Female radio button is checked
+}
+else if(document.getElementById('3').checked) {
+  //Female radio button is checked
+}
+else if(document.getElementById('4').checked) {
+  //Female radio button is checked
+}
+ else if(document.getElementById('5').checked) {
+    
+  //Female radio button is checked
+ }
+
+
+
+
+
+    
+ }
+ //var submitEmployability = $('#submit');
+  //  $('#submit').click(function(){
+  //    var text =  $("#selectQualification :selected").text();
+  //      console.log(text);
+      
+   // });
 </script>
                 </div>
             </div>

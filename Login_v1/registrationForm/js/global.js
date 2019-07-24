@@ -65,6 +65,12 @@
     } catch (err) {
         console.log(err);
     }
+
+    /* Employability Score */
+    var submitEmployability = $("")
+    $(submitEmployability).click(function(){
+
+    });
     
 
 })(jQuery);
