@@ -1,27 +1,27 @@
-pragma solidity ^0.5;
+pragma solidity ^0.5.0;
 
 import "../node_modules/openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
-import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
+// import "../node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol";
 import "../node_modules/openzeppelin-solidity/contracts/math/SafeMath.sol";
 
 
-contract KhanyeziTokens is IERC20, Ownable {
+contract KhanyeziTokens is IERC20 {
     // We inherit from two contracts: ERC20 to make it represent a fungible token, that can be traded
     // and Ownable to manage authorization and restrict certain methods to the owner only, like minting
     // Safe math is better for mathematical functions
     using SafeMath for uint256;
     mapping (address => uint256) private _balances; // to obtain balance of a given address
     mapping (address => mapping (address => uint256)) private _allowed; // the amount allowed to spend
-   
+
    struct Investment {
         uint256 amount;
         uint256 date;
     }
-    
+
     // Investments[] public investments;
-   
-    mapping (address => Investment) private _investments;
-    
+
+    mapping (address => Investment) public _investments;
+
     // include another struct to add the details of the investor and not just the balances
 
 
@@ -68,11 +68,17 @@ contract KhanyeziTokens is IERC20, Ownable {
     function balanceOf(address _owner) public view returns (uint256) {
        return _balances[_owner];
    }
-   
+
    // this function return both the amount and the date the investor made the investment
-   function InvestorInfo(address _owner) public view returns (uint256, uint256) {
-       return (_investments[_owner].amount, _investments[_owner].date);
+   function InvestorAmount(address _owner) public view returns (uint256) {
+       return _investments[_owner].amount;
    }
+   
+   function InvestorDate(address _owner) public view returns (uint256) {
+       return _investments[_owner].date;
+   }
+   
+   
 
    // Function to check the amount of tokens that an owner("sender") allowed to a recipient.
     function allowance(address _owner, address _to) public view returns (uint256){
@@ -87,10 +93,10 @@ contract KhanyeziTokens is IERC20, Ownable {
         emit Transfer(msg.sender, _to, _amount); // msg.sender may need to tx.origin
         _balances[msg.sender] = _balances[msg.sender].sub(_amount);
         _balances[_to] = _balances[_to].add(_amount);
-        
+
         _investments[_to].amount = _amount;
         _investments[_to].date = now;
-        
+
         return true;
    }
 
@@ -116,13 +122,24 @@ contract KhanyeziTokens is IERC20, Ownable {
    }
 
     // function to be able to mint new coins
-    function mint(address _account, uint256 _amount) public onlyOwner {
-        require(_account != address(0), "Account is not allowed to be account(0)");
+    function mint(address _account, uint256 _amount) public {
+        // require() add require function that only the creator of the contract can call this
+        // create a require function so that only the investment contract can call this function
 
         _totalSupply = _totalSupply.add(_amount);
         _balances[_account] = _balances[_account].add(_amount); // may need to use tx.origin
+    
+        _investments[_account].amount = _amount;
+        _investments[_account].date = now;
         emit Transfer(address(0), _account, _amount);
   }
+
+    function burn(uint256 value) public {
+        // require(account != address(0));
+
+        _totalSupply = _totalSupply.sub(value);
+        // _balances[account] = _balances[account].sub(value); // should burn from all accounts
+    }
 
     function name() public view returns (string memory){
         return _name;
@@ -142,20 +159,3 @@ contract KhanyeziTokens is IERC20, Ownable {
 
 
 }
-
-
-
-/* 
-We then deply 3 different contracts to represent each branch in 2_khanyeziToken_deploy.js as such:
-by defining each of the state variables
-
-module.exports = async function(deployer) {
-  const KhanyeziSenior = await deployer.deploy(KhanyeziTokens, "KhanyeziSenior", "K_SEN", 0, 0.06, 0.75*1000000 , 1);
-  const KhanyeziMezzanine = await deployer.deploy(KhanyeziTokens, "KhanyeziMezzanine", "K_MEZ", 0, 0.11, 0.15*1000000 , 1);;
-  const KhanyeziEquity = await deployer.deploy(KhanyeziTokens, "KhanyeziEquity", "K_EQT", 0, 0, 0.1*1000000, 1);
-  await deployer.deploy(InvestmentVehicle, KhanyeziSenior.address, KhanyeziMezzanine.address, KhanyeziEquity.address)
-};
-
-where the InvestmentVehicle can then use the tokens by knowing the tokens' adresses
-
-*/

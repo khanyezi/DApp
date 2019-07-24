@@ -1,5 +1,7 @@
 /*Author: Nyasha C */
-//test
+//test2
+
+/*
 pragma solidity ^0.5.0;
 
 /* This contract stores the following:
@@ -87,7 +89,7 @@ function studentLoan (){
 
 /*Maps the assosciated financer & student address to their balances */
 
-mapping ( address => 256) public balances;
+mapping ( address => uint256) public balances;
 
 /* Only the parties involved may call this function i.e. the student and the investor*/
 
@@ -107,15 +109,15 @@ function repayment(address receiver, uint amount) returns(uint256){
     balances[msg.sender] -= amount; /*reduce students outstanding balance by amount paid */
     //balances[receiver]   += amount; /*increase balance of the investor by this amount* */
 
-    if amount < loan.tracker.NextPaymentDue{ /* if there is a shortfall on the repayment */
+    if (amount < loan.tracker.NextPaymentDue) { /* if there is a shortfall on the repayment */
         loan.tracker.ArrearsStatus += 1;
     }
 
     loan.tracker.LastPayment == amount; /* Keep track of most recent repayment amount */
     /* How much is due next month */
-    if balances[msg.sender] < loan.monthlypayment{ /* if the balance remaining is less than the repayment amount */
+    if (balances[msg.sender] < loan.monthlypayment){ /* if the balance remaining is less than the repayment amount */
         loan.tracker.NextPaymentDue == balances[msg.sender];
-    } else if loan.tracker.ArrearsStatus == 0 { /* If no arrears just the contractual amount is due */
+    } else if (loan.tracker.ArrearsStatus == 0){ /* If no arrears just the contractual amount is due */
         loan.tracker.NextPaymentDue == loan.monthlypayment;
     } else { /* The are in arrears */
         loan.tracker.NextPaymentDue == (loan.monthlypayment - amount) + loan.monthlypayment; /* interest on arrears should be added*/
@@ -139,3 +141,4 @@ function checkLoanPayoff() {
 }
 
 // Tracking of dates , and function to add loans into array still to be done
+
