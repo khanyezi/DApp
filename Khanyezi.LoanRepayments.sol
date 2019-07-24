@@ -19,7 +19,7 @@ Check if the loan has been settled - if so change ownership of the token */
 /* This is the constructor which will deploy the contract on the blockchain */
 
 
-/*struct dataatype to store the loan details */
+/*struct data type to store the loan details */
 contract LoanRepayments {
 
 function studentLoan (){
@@ -40,7 +40,7 @@ function studentLoan (){
         uint interest;
         uint gracePeriod; /* Will be used to create data from which repayments are expected - dates can be in a separate contract */
         uint loanAmount;
-        string Tranche;     /* possible values: "KhanyeziSenior","KhanyeziMezzanine",""KhanyeziEquity"" */
+      //  string Tranche;     /* possible values: "KhanyeziSenior","KhanyeziMezzanine",""KhanyeziEquity"" */
 
 
 }
@@ -54,7 +54,7 @@ function studentLoan (){
 /* The parties involved */
     struct Parties{
         address studentfunded;
-        address loanfinancer;
+        address loanfinancer; /* Just the bond now*/
     }
 /* Keep a running balance */
     struct Tracker{
@@ -105,7 +105,7 @@ modifier partiesOnly {
 
 function repayment(address receiver, uint amount) returns(uint256){
     balances[msg.sender] -= amount; /*reduce students outstanding balance by amount paid */
-    balances[receiver]   += amount; /*increase balance of the investor by this amount* */
+    //balances[receiver]   += amount; /*increase balance of the investor by this amount* */
 
     if amount < loan.tracker.NextPaymentDue{ /* if there is a shortfall on the repayment */
         loan.tracker.ArrearsStatus += 1;
