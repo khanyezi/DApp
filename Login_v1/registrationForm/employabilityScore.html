@@ -10,7 +10,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Regustration Form</title>
+    <title>Employability Score</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -32,21 +32,43 @@
         <div class="wrapper wrapper--w680">
             <div class="card card-4">
                 <div class="card-body">
-                    <h2 class="title">Registration Form</h2>
+                    <h2 class="title">Employability Score sheet</h2>
                     <form method="POST">
                         <form class="needs-validation" novalidate>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">first name</label>
+                                    <label class="label">Current Qualification</label>
                                     <input class="input--style-4" type="text" name="first_name" required>
 
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">last name</label>
-                                    <input class="input--style-4" type="text" name="last_name" required>
+                                    <label class="label">GPA</label>
+                                    <div class="p-t-10">
+                                            <label class="radio-container m-r-45">75 - 100
+                                                <input type="radio" checked="checked" name="gender">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <label class="radio-container">70 - 74
+                                                <input type="radio" name="gender">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <label class="radio-container">60 - 69
+                                                    <input type="radio" name="gender">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            <label class="radio-container">50 - 59
+                                                        <input type="radio" name="gender">
+                                                        <span class="checkmark"></span>
+                                             </label>
+                                             <label class="radio-container">49 or below
+                                                    <input type="radio" name="gender">
+                                                    <span class="checkmark"></span>
+                                         </label>
+                                        </div>
+                                 <!----  <input class="input--style-4" type="text" name="last_name" required> -->
                                     
                         
                                 </div>
@@ -54,6 +76,11 @@
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
+                                    <div class="input-group">
+                                            <label class="label">University</label>
+                                            <input class="input--style-4" type="email" name="email" required>
+                                
+                                        </div>
                                 <div class="input-group">
                                     <label class="label">Birthday</label>
                                     <div class="input-group-icon">
@@ -85,7 +112,7 @@
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Email</label>
+                                    <label class="label">University</label>
                                     <input class="input--style-4" type="email" name="email" required>
                         
                                 </div>
@@ -121,32 +148,24 @@
                                 </div>
                         </div>
                         <div class="input-group">
-                                <label class="label">Are you a student or an investor?</label>
+                                <label class="label">Employment Status</label>
                                 <div class="rs-select2 js-select-simple select--no-search">
                                     <select name="status">
                                         <option disabled="disabled" selected="selected">Choose option</option>
+                                        <option>Unemployed</option>
+                                        <option>Full-time employment</option>
+                                        <option>Part-time employment</option>
                                         <option>Student</option>
-                                        <option>Investor</option>
                                     </select>
                                     <div class="select-dropdown"></div>
                                 </div>
                         </div>
-                        <form class="md-form">
-                                <div class="file-field">
-                                  <label class="label">Upload Profile Photo</label>
-                                  <div class="mb-4">
-                                    <img src="https://mdbootstrap.com/img/Photos/Others/placeholder-avatar.jpg"
-                                      class="rounded-circle z-depth-1-half avatar-pic" alt="example placeholder avatar">
-                                  </div>
-                                  <div class="d-flex justify-content-center">
-                                    <div class="btn btn-mdb-color btn-rounded float-left">
-
-                                      <span>Add photo</span>
-                                      <input type="file">
-                                    </div>
-                                  </div>
-                                </div>
-                              </form>
+                        <div class="input-group">
+                                <label class="label">Net Income</label>
+                                <input class="input--style-4" type="email" name="email" required>
+                    
+                            </div>
+                    
                               <div class="input-group">
                                 <label for="inputPassword5">Password</label>
                                      <input type="password" id="inputPassword5" class="input--style-4" aria-describedby="passwordHelpBlock" required>
