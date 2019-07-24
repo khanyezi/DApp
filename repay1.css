@@ -1,3 +1,7 @@
+body, html {
+    font-family: Poppins-Regular, sans-serif;
+}
+
 #invoice{
     padding: 30px;
 }
@@ -111,6 +115,10 @@
     color: #fff
 }
 
+.invoice table .total105 {
+    background: #3989c6;
+    color:  #fff
+}
 .invoice table tbody tr:last-child td {
     border: none
 }
