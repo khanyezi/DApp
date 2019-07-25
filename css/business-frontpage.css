@@ -11,7 +11,7 @@ body, html {
 	font-family:Verdana;
 }
 .bg-primary {
-  background-color: #4158d0 ;
+  background-color: #007bff57 ;
 
 } 
 
@@ -36,20 +36,29 @@ body, html {
 
 .p-wwd {
   color : #4158d0;
+
 }
 
-.color-box 
-{text-align: center;
-  font-size: 60px; 
-  background-color: aliceblue; 
-  width:100%; 
-  height:auto; 
-  padding:5%;}
+.text-white {
+  color :White;
 
-  .color-box2
-{text-align: center;
-  font-size: 40px; 
-  background-color: aliceblue; 
+  font-family: Poppins-Regular, sans-serif;
+}
+
+.color-box {
+  text-align: center;
+  font-size: 60px;
+  background-color:aliceblue; 
   width:100%; 
   height:auto; 
-  padding:5%;}
+  padding:5%;
+}
+
+.color-box2 {
+  text-align: center;
+  font-size: 40px;
+  background-color:aliceblue; 
+  width:100%; 
+  height:auto; 
+  padding:5%;
+}
