@@ -23,6 +23,34 @@ web3.eth.defaultAccount = web3.eth.accounts[0]; // account we want to use to exe
 
  var userContract = web3.eth.contract([
 	{
+		"constant": true,
+		"inputs": [],
+		"name": "TotalInvestors",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalSupply",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"constant": false,
 		"inputs": [
 			{
@@ -34,6 +62,52 @@ web3.eth.defaultAccount = web3.eth.accounts[0]; // account we want to use to exe
 		"outputs": [],
 		"payable": true,
 		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "_totalAmount",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "investors",
+		"outputs": [
+			{
+				"name": "InvestorAddrs",
+				"type": "address"
+			},
+			{
+				"name": "registerDate",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
+		"name": "registerStudent",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -51,12 +125,31 @@ web3.eth.defaultAccount = web3.eth.accounts[0]; // account we want to use to exe
 		"type": "function"
 	},
 	{
-		"constant": false,
+		"constant": true,
 		"inputs": [],
-		"name": "registerStudent",
-		"outputs": [],
+		"name": "InvestmentValue",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
 		"payable": false,
-		"stateMutability": "nonpayable",
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "InvestorDepositeDate",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -68,14 +161,119 @@ web3.eth.defaultAccount = web3.eth.accounts[0]; // account we want to use to exe
 			}
 		],
 		"name": "repayment",
+		"outputs": [],
+		"payable": true,
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "InvestorCount",
 		"outputs": [
 			{
 				"name": "",
 				"type": "uint256"
 			}
 		],
-		"payable": true,
-		"stateMutability": "payable",
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "_students",
+		"outputs": [
+			{
+				"name": "StudentAddrs",
+				"type": "address"
+			},
+			{
+				"name": "applicationDate",
+				"type": "uint256"
+			},
+			{
+				"name": "_studentLoanAmount",
+				"type": "uint256"
+			},
+			{
+				"name": "loanStatus",
+				"type": "uint256"
+			},
+			{
+				"name": "RepaymentsLeft",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "_AddrsToInvestorNo",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "totalTokensNeeded",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "interest",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "StundentLoanAmount",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -157,216 +355,13 @@ web3.eth.defaultAccount = web3.eth.accounts[0]; // account we want to use to exe
 		],
 		"name": "StundentTransaction",
 		"type": "event"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "_AddrsToInvestorNo",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "address"
-			}
-		],
-		"name": "_students",
-		"outputs": [
-			{
-				"name": "StudentAddrs",
-				"type": "address"
-			},
-			{
-				"name": "applicationDate",
-				"type": "uint256"
-			},
-			{
-				"name": "_studentLoanAmount",
-				"type": "uint256"
-			},
-			{
-				"name": "loanStatus",
-				"type": "uint256"
-			},
-			{
-				"name": "RepaymentsLeft",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "_totalAmount",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "interest",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "InvestmentValue",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "InvestorCount",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "InvestorDepositeDate",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"name": "investors",
-		"outputs": [
-			{
-				"name": "InvestorAddrs",
-				"type": "address"
-			},
-			{
-				"name": "registerDate",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "StundentLoanAmount",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "TotalInvestors",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "totalSupply",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"constant": true,
-		"inputs": [],
-		"name": "totalTokensNeeded",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"payable": false,
-		"stateMutability": "view",
-		"type": "function"
 	}
 ]);
 
 // havent given the smart contract address yet, which we need to do
 // use the address after deploying contract using environment: Web3 Provider
 
-var User = userContract.at("0x11724b8e39fba3d13e57642a2972fe7a7619224a");
+var User = userContract.at("0x20dab72a9152b0e2fb77ded4ad16bab303d27ca5");
 
 // want to lonk the contract variables to update when clicking the Update User button
 
@@ -430,7 +425,7 @@ $("#CalculateInvestment").click(function(error, CurrentInvestment) {
 
 })
 
-$("#repayment").click(function(){
+$("#studentbutton").click(function(){
 	User.repayment($("#repayment").val(), 
 	{from : web3.eth.defaultAccount,  
 	 value: $("#repayment").val()}); 
@@ -439,7 +434,10 @@ $("#repayment").click(function(){
 var studentEvent = User.StundentTransaction(); // takes a solidity event and stores is in a java variable
 
 studentEvent.watch(function(error, result) { // watch is a function for event 
-    if(!error){
+	
+	console.log("you have " + result.args.RepaymentsLeft + " repayments left");
+
+	if(!error){
 
 		$("#studentdetails").html("You have " + result.args.RepaymentsLeft + " payments left, and you are " 
 		+ result.args.loanStatus + " payments behind")
@@ -450,6 +448,14 @@ studentEvent.watch(function(error, result) { // watch is a function for event
 
     }
 
+})
+
+$("#investorSubmit").click(function(){
+	User.registerInvestor({from : web3.eth.defaultAccount})
+})
+
+$("#studentSubmit").click(function(){
+	User.registerStudent({from : web3.eth.defaultAccount})
 })
 
 
