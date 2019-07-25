@@ -366,7 +366,7 @@ web3.eth.defaultAccount = web3.eth.accounts[0]; // account we want to use to exe
 // havent given the smart contract address yet, which we need to do
 // use the address after deploying contract using environment: Web3 Provider
 
-var User = userContract.at("0x3c58120ca2bf8c02b38d3eff849b6ba61e4cac0c");
+var User = userContract.at("0x11724b8e39fba3d13e57642a2972fe7a7619224a");
 
 // want to lonk the contract variables to update when clicking the Update User button
 
