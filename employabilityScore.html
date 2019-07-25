@@ -13,17 +13,18 @@
     <title>Employability Score</title>
 
     <!-- Icons font CSS-->
-    <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
-    <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <link href="Login_v1/registrationForm/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="Login_v1/registrationForm/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Vendor CSS-->
-    <link href="vendor/select2/select2.min.css" rel="stylesheet" media="all">
-    <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+    <link href="Login_v1/registrationForm/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="Login_v1/registrationForm/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 
     <!-- Main CSS-->
-    <link href="css/main.css" rel="stylesheet" media="all">
+    <link href="Login_v1/registrationForm/css/main.css" rel="stylesheet" media="all">
+    <link href="main.css" rel="stylesheet" media="all">
 </head>
 
 <body>
@@ -84,7 +85,6 @@
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
-                                
                                 <div class="input-group">
                                     <label class="label">Birthday</label>
                                     <div class="input-group-icon">
@@ -125,15 +125,15 @@
                                                 </select>
                                                 <div class="select-dropdown"></div>
                                             </div>
-                                </div>
+                                        
+                                    </div>
+        
                             </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <label class="label">Phone Number</label>
-                                    <input class="input--style-4" type="text" name="phone" required>
-                            
+                            <div class="input-group">
+                                    <label class="label">Email</label>
+                                    <input class="input--style-4" type="text" name="ID">
                                 </div>
-                            </div>
+                           
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
@@ -226,15 +226,21 @@
                                             </div>
                         
                     
-                        <div class="p-t-15">
-                            <button id = "submit"class="btn btn--radius-2 btn--blue" type="submit"onclick="employabilityScore()">Submit </button>
-                        </div>
+                            <!---    <button id = "submit" class="btn btn--radius-2 btn--blue" type="subm -->
+                                <div class="p-t-15">
+                                       
+                                         <a id ="studentSubmit" class="btn btn--radius-2 btn--blue" href = "log-in.html" type="submit">Submit</a> 
+                                     </div>
+                           <!---    <asp:Button ID="submit"  class="btn btn--radius-2 btn--blue" runat="server" Text="Button"  OnClientClick="javascript:alert('Thank you for your submission! We will be in contact with regards to the outcome of your application.Page will redirected to another page');window.location.href='log-in.html'; return false;" /> -->
+
+                        
+                        
                         <h2 id="user"></h2>
                     </form>
                     </form>
                     <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
+/*(function() {
   'use strict';
   window.addEventListener('load', function() {
     // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -245,15 +251,25 @@
         if (form.checkValidity() === false) {
           event.preventDefault();
           event.stopPropagation();
+          
         }
         form.classList.add('was-validated');
-
+        
       }, false);
-    });
+    }); 
+    //alert("Thank you for your submission! We will be in contact with regards to the outcome of your application. ");
   }, false);
-})();
+})();*/
 
 </script>
+
+<script>
+    document.getElementById("studentSubmit").onclick=function(){
+        alert("Thank you for your submission! You will be emailed for further instructions. Check your profile for the outcome of your application.");
+      window.location.href = "log-in.html";
+          };
+</script>
+
 <script>
         /* Employability Score */
  function employabilityScore() {
@@ -341,14 +357,14 @@ else if(document.getElementById('4').checked) {
     </div>
 
     <!-- Jquery JS-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="Login_v1/registrationForm/vendor/jquery/jquery.min.js"></script>
     <!-- Vendor JS-->
-    <script src="vendor/select2/select2.min.js"></script>
-    <script src="vendor/datepicker/moment.min.js"></script>
-    <script src="vendor/datepicker/daterangepicker.js"></script>
+    <script src="Login_v1/registrationForm/vendor/select2/select2.min.js"></script>
+    <script src="Login_v1/registrationForm/vendor/datepicker/moment.min.js"></script>
+    <script src="Login_v1/registrationForm/vendor/datepicker/daterangepicker.js"></script>
 
     <!-- Main JS-->
-    <script src="js/global.js"></script>
+    <script src="Login_v1/registrationForm/js/global.js"></script>
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
