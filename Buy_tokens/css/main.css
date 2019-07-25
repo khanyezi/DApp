@@ -290,6 +290,10 @@ h6 {
   background: #4272d7;
 }
 
+.btn--black {
+  background: black;
+}
+
 .btn--blue:hover {
   background: #3868cd;
 }
@@ -667,4 +671,12 @@ a {
 
 button:hover, a:hover {
   opacity: 0.7;
+}
+
+.header .wrap {
+  border: 1px solid #f00;
+  width: 100px;
+  margin: auto;
+  text-align: center;
+  position: relative;
 }

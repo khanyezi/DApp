@@ -31,23 +31,31 @@
 <div class="wrapper wrapper--w680">
         <div class="card card-4">
             <div class="card-body">
-                    <center><h1 class="header">Welcome John Doe! </h1></center>
-                <form method="POST">
-                    <img src="images/investor2.png" class = "image">
+                    <center><h1 class="header">Welcome Khanyezi! </h1></center>
 
-                    <p class="title" style = "margin-top: 3em">CEO & Founder</p>
-                    <p class="title">ButterfliesAndRainbows</p>
+                    <center><h3 id = loanDetails></h3></center>
+
+                <form method="POST">
+                    <img src="images/student.png" class = "image">
+
+                    <p class="title" style = "margin-top: 3em">Masters in FinTech</p>
+                    <h5>University of Cape Town</h5>
+                    <h5 style = "color: red">Loan Status: Approved</h5>
+                    <hr style = "margin-top: 2em">
                     
                     <div class="p-t-15">
-                            <p><a style = "margin-top: 1em" id="investbutton" href="KhanyeziTest.html" class="btn btn--radius-2 btn--blue">Invest</a></p>
+                            <label class="label">Enter repayment amount below </label>
+                            <input style = "margin-top: 1em" id="repayment" class="input--style-4" type="text">
+                            <p><button style = "margin-top: 1em" id="studentbutton" class="btn btn--radius-2 btn--blue">Make Repayment</button></p>
+                            <h2 style = "margin-top: 1em" id="studentdetails"></h2>
                     </div>
+
 
                     <hr style = "margin-top: 5em">
                     <div class="col-4">
                             <div class="input-group">
-                                <label style = "margin-top: 5em" class="label" style="color: black">Find out your current investment value now</label>
-                                <button id="CalculateInvestment" type="button" class="btn btn-info btn-md">Calculate</button>
-                                <h2 id="InvestmentValue"></h2>
+                                <label style = "margin-top: 3em" class="label" style="color: black">Generate your invoice in Rand here</label>
+                                <a style = "margin-top: 1em" href ="repay1.html" type="button" class="btn btn--radius-2 btn--black">Invoice</a>
                             </div>
                     </div>
                     

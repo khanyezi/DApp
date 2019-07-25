@@ -23,6 +23,12 @@ button {
     display:block;
 }
 
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
+}
+
 #instructor {
     padding:1em;
     background-color:#fff;
