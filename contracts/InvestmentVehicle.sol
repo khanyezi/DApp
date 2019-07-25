@@ -79,7 +79,15 @@ contract InvestmentVehicle {
         _AddrsToInvestorNo[msg.sender] = index; // to get the index for an address
         // return the investor id
         return index;
-  }
+    }
+
+    function registerStudent() public {
+        _students[msg.sender].applicationDate = now;
+        _students[msg.sender]._studentLoanAmount = _studentLoanAmount;
+        _students[msg.sender].loanStatus = 0;
+        _students[msg.sender].RepaymentsLeft = 12;
+    }
+    
 
     /* Returns the total number of holders of this currency. */
     function InvestorCount() public view returns (uint256) {

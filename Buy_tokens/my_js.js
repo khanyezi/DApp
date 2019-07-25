@@ -1,14 +1,20 @@
 // first need to check whether web3 is installed
 
 if (typeof web3 != "undefined"){
-    web3 = new Web3(web3.currentProvider); // create new isntance
+    web3js = new Web3(web3.currentProvider);; // create new isntance
 } else {
-    web3 = new Web3(new Web3.providers.HttpProvider('HTTP://localhost:7545')) // localhost : use Http provider
+	web3 = new Web3(new Web3.providers.HttpProvider('HTTP://localhost:7545')) // localhost : use Http provider
+  //  web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io/v3/690b7afa33b64ed985dcd53eb8091ba4"));
 }
+
+
+
+
 
 // store file permanently ""
 
 web3.eth.defaultAccount = web3.eth.accounts[0]; // account we want to use to execute things (takes first account in array)
+// web3.eth.defaultAccount = '0xpersonalaccount'
 
 // want to now store the JSON representation of the smert contract here
 
@@ -98,6 +104,15 @@ web3.eth.defaultAccount = web3.eth.accounts[0]; // account we want to use to exe
 	{
 		"constant": false,
 		"inputs": [],
+		"name": "registerStudent",
+		"outputs": [],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [],
 		"name": "registerInvestor",
 		"outputs": [
 			{
@@ -107,6 +122,102 @@ web3.eth.defaultAccount = web3.eth.accounts[0]; // account we want to use to exe
 		],
 		"payable": false,
 		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "InvestmentValue",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "InvestorDepositeDate",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "repayment",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "InvestorCount",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"name": "",
+				"type": "address"
+			}
+		],
+		"name": "_students",
+		"outputs": [
+			{
+				"name": "StudentAddrs",
+				"type": "address"
+			},
+			{
+				"name": "applicationDate",
+				"type": "uint256"
+			},
+			{
+				"name": "_studentLoanAmount",
+				"type": "uint256"
+			},
+			{
+				"name": "loanStatus",
+				"type": "uint256"
+			},
+			{
+				"name": "RepaymentsLeft",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
@@ -145,7 +256,21 @@ web3.eth.defaultAccount = web3.eth.accounts[0]; // account we want to use to exe
 	{
 		"constant": true,
 		"inputs": [],
-		"name": "TokenHolderCount",
+		"name": "interest",
+		"outputs": [
+			{
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [],
+		"name": "StundentLoanAmount",
 		"outputs": [
 			{
 				"name": "",
@@ -164,6 +289,22 @@ web3.eth.defaultAccount = web3.eth.accounts[0]; // account we want to use to exe
 			},
 			{
 				"name": "_tokensNeeded",
+				"type": "uint256"
+			},
+			{
+				"name": "studentInterest",
+				"type": "uint256"
+			},
+			{
+				"name": "studentTerm",
+				"type": "uint256"
+			},
+			{
+				"name": "studentLoanAmount",
+				"type": "uint256"
+			},
+			{
+				"name": "studentRepayment",
 				"type": "uint256"
 			}
 		],
@@ -192,21 +333,52 @@ web3.eth.defaultAccount = web3.eth.accounts[0]; // account we want to use to exe
 		],
 		"name": "InvestorTransaction",
 		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"name": "OwnerAddrs",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"name": "_studentLoanAmount",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "RepaymentsLeft",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"name": "loanStatus",
+				"type": "uint256"
+			}
+		],
+		"name": "StundentTransaction",
+		"type": "event"
 	}
 ]);
 
 // havent given the smart contract address yet, which we need to do
 // use the address after deploying contract using environment: Web3 Provider
 
-var User = userContract.at("0x02ceae7a80c9eaf4ae889392d4a483b8c88d86db");
+var User = userContract.at("0xb18daa355ff11c9294c190424e9ac3704c81786f");
 
 // want to lonk the contract variables to update when clicking the Update User button
 
 $("#button").click(function(){
 	User.buyTokens($("#PurchaseTokens").val(), 
 	{from : web3.eth.defaultAccount,  
-	 value: $("#PurchaseTokens").val()}); // calls the buy Tokens function from the smart contract
+	 value: $("#PurchaseTokens").val()}); 
 })
+	//User.buyTokens($("#PurchaseTokens").val(), 
+	//{from : web3.eth.defaultAccount,  
+	// value: $("#PurchaseTokens").val()}); // calls the buy Tokens function from the smart contract
+
 
 // to get something back from a smart contarct, need to create an event to see what is happening (can then use event listener)
 // always need to copy the new address and API when changing something in your contract
@@ -234,23 +406,30 @@ var TotalTokens = User.totalSupply.call();
 
 var NeededTokens = User.totalTokensNeeded.call();
 
-document.getElementById("TokenProgress").innerHTML = "We have reached " + TotalTokens/NeededTokens + " % of our KhayeziToken sale!" ;
+
+$("#TokenProgress").html("We have reached " + TotalTokens/NeededTokens + " % of our KhayeziToken sale!") ;
 
 // calculating the current investment value
 
+var InvestmentAmount = User.InvestmentValue.call();
+var InvestmentDate = User.InvestorDepositeDate.call();
+var interest = User.interest.call();
 
-let CurrentInvestment = function() {
 
-	InvestmentAmount = User.InvestmentValue.call();
-	InvestmentDate = User.InvestorDepositeDate.call();
-	interest = User.interest.call();
+$("#CalculateInvestment").click(function(error, CurrentInvestment) {
 
-	CurrentTime = Math.round((new Date()).getTime() / 1000);
+	var CurrentTime = Math.round((new Date()).getTime() / 1000);
+	//console.log(CurrentTime);
 
-	CurrentInvestment = InvestmentAmount*(1 + (interest/12)/100)*(CurrentTime - InvestmentDate) / 3.85802469136e-7
+	var TimeDifference = Math.round((CurrentTime - InvestmentDate)/2629743);
 	
-	return CurrentInvestment;
-}
+	console.log("the time in months is " + TimeDifference);
+	var CurrentInvestment = InvestmentAmount*(1 + (interest/12)/100)*(TimeDifference);
+	//console.log("your current value is " + CurrentInvestment);
+	
+		$("#InvestmentValue").html("Your current value is " + CurrentInvestment)
+
+})
 
 
 
