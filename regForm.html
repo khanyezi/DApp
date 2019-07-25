@@ -10,7 +10,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title>Regustration Form</title>
+    <title>Registration Form</title>
 
     <!-- Icons font CSS-->
     <link href="Login_v1/registrationForm/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -159,11 +159,21 @@
                                     <input type="password" id="inputPassword6" class="input--style-4" aria-describedby="passwordHelpBlock" required>
 
                             </div>
-                    
+                
+                     
+                        <div class = "row">
                         <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
+                           <p>Student</p>
+                            <button id ="submit" class="btn btn--radius-2 btn--blue" type="submit">Submit</button> 
                         </div>
-                    </form>
+                        <div class="p-t-15">
+                                <p>Investor</p>
+                            <a id = "investorSubmit"  class="btn btn--radius-2 btn--blue" href = "investor_profile.html" type="submit">Submit</a>
+                        </div>
+                      </div>
+                
+
+                     </form>
                     </form>
                     <script>
 // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -174,7 +184,7 @@
     var forms = document.getElementsByClassName('needs-validation');
     // Loop over them and prevent submission
     var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
+      form.addEventListener("submit", function(event) {
         if (form.checkValidity() === false) {
           event.preventDefault();
           event.stopPropagation();
