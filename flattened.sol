@@ -502,7 +502,7 @@ contract InvestmentVehicle {
     /* Calculates next payment due and the date */
     /* Keeps track of payment shortfalls and underpayments*/
 
-    function repayment(uint _amount) public returns (uint256){
+    function repayment(uint _amount) public payable returns (uint256){
         require(_students[msg.sender]._studentLoanAmount != 0, "no more repayments due");
         _students[msg.sender]._studentLoanAmount = _students[msg.sender]._studentLoanAmount - _amount;
         _students[msg.sender].RepaymentsLeft = _students[msg.sender].RepaymentsLeft - _amount;
