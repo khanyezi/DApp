@@ -68,12 +68,7 @@ web3.eth.defaultAccount = web3.eth.accounts[0]; // account we want to use to exe
 			}
 		],
 		"name": "repayment",
-		"outputs": [
-			{
-				"name": "",
-				"type": "uint256"
-			}
-		],
+		"outputs": [],
 		"payable": true,
 		"stateMutability": "payable",
 		"type": "function"
@@ -366,7 +361,7 @@ web3.eth.defaultAccount = web3.eth.accounts[0]; // account we want to use to exe
 // havent given the smart contract address yet, which we need to do
 // use the address after deploying contract using environment: Web3 Provider
 
-var User = userContract.at("0x11724b8e39fba3d13e57642a2972fe7a7619224a");
+var User = userContract.at("0x20dab72a9152b0e2fb77ded4ad16bab303d27ca5");
 
 // want to lonk the contract variables to update when clicking the Update User button
 
@@ -378,12 +373,6 @@ $("#button").click(function(){
 	//User.buyTokens($("#PurchaseTokens").val(), 
 	//{from : web3.eth.defaultAccount,  
 	// value: $("#PurchaseTokens").val()}); // calls the buy Tokens function from the smart contract
-
-
-// to get something back from a smart contarct, need to create an event to see what is happening (can then use event listener)
-// always need to copy the new address and API when changing something in your contract
-
-// add event listener
 
 var userEvent = User.InvestorTransaction(); // takes a solidity event and stores is in a java variable
 
@@ -407,9 +396,10 @@ var TotalTokens = User.totalSupply.call();
 var NeededTokens = User.totalTokensNeeded.call();
 
 
-$("#TokenProgress").html("We have reached " + TotalTokens/NeededTokens + " % of our KhayeziToken sale!") ;
+$("#TokenProgress").html("We have reached " + (TotalTokens/NeededTokens)*100 + " % of our KhayeziToken goal!") ;
+$("#TotalTokens").html("We aim to raise " + NeededTokens + " KhanyeziTokens")
 
-// calculating the current investment value
+// calculating the current investment value for Investor profile page 
 
 var InvestmentAmount = User.InvestmentValue.call();
 var InvestmentDate = User.InvestorDepositeDate.call();
@@ -430,7 +420,9 @@ $("#CalculateInvestment").click(function(error, CurrentInvestment) {
 
 })
 
-$("#repayment").click(function(){
+// student profile calculation, repayment and returning the number of payments left and how many payments behind
+
+$("#studentbutton").click(function(){
 	User.repayment($("#repayment").val(), 
 	{from : web3.eth.defaultAccount,  
 	 value: $("#repayment").val()}); 
@@ -439,7 +431,10 @@ $("#repayment").click(function(){
 var studentEvent = User.StundentTransaction(); // takes a solidity event and stores is in a java variable
 
 studentEvent.watch(function(error, result) { // watch is a function for event 
-    if(!error){
+	
+	console.log("you have " + result.args.RepaymentsLeft + " repayments left");
+
+	if(!error){
 
 		$("#studentdetails").html("You have " + result.args.RepaymentsLeft + " payments left, and you are " 
 		+ result.args.loanStatus + " payments behind")
@@ -452,7 +447,19 @@ studentEvent.watch(function(error, result) { // watch is a function for event
 
 })
 
+// register investors and students when they press the submit button
 
+$("#investorSubmit").click(function(){
+	User.registerInvestor({from : web3.eth.defaultAccount})
+})
+
+$("#studentSubmit").click(function(){
+	User.registerStudent({from : web3.eth.defaultAccount})
+})
+
+var studentLoan = User.StundentLoanAmount.call()
+
+$("#loanDetails").html("Your loan is worth " + studentLoan + " ether, and repayment starts today!")
 
 
 
