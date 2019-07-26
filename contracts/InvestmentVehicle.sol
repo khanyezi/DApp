@@ -44,7 +44,6 @@ contract InvestmentVehicle {
     }
 
     struct Student {
-        address StudentAddrs;
         uint256 applicationDate;
         uint256 _studentLoanAmount;
         uint256 loanStatus; // +1 per late payment (monthly)
@@ -80,14 +79,17 @@ contract InvestmentVehicle {
         // return the investor id
         return index;
     }
-
+    
     function registerStudent() public {
         _students[msg.sender].applicationDate = now;
         _students[msg.sender]._studentLoanAmount = _studentLoanAmount;
-        _students[msg.sender].loanStatus = 0;
+        _students[msg.sender].loanStatus = 0; 
         _students[msg.sender].RepaymentsLeft = 12;
     }
     
+    // function StudentCount() public view returns (uint256) {
+    //     return _students.length;
+    // }
 
     /* Returns the total number of holders of this currency. */
     function InvestorCount() public view returns (uint256) {
@@ -148,10 +150,10 @@ contract InvestmentVehicle {
     /* Calculates next payment due and the date */
     /* Keeps track of payment shortfalls and underpayments*/
 
-    function repayment(uint _amount) public returns (uint256){
+    function repayment(uint _amount) public payable returns (uint256) {
         require(_students[msg.sender]._studentLoanAmount != 0, "no more repayments due");
         _students[msg.sender]._studentLoanAmount = _students[msg.sender]._studentLoanAmount - _amount;
-        _students[msg.sender].RepaymentsLeft = _students[msg.sender].RepaymentsLeft - _amount;
+        _students[msg.sender].RepaymentsLeft = _students[msg.sender].RepaymentsLeft - 1;
 
         if (_amount < _studentRepayment) { /* if there is a shortfall on the repayment */
             _students[msg.sender].loanStatus = _students[msg.sender].loanStatus + 1;
@@ -174,27 +176,3 @@ contract InvestmentVehicle {
 
 
 }
-
- // check investment 
-
-    /*
-
-    function CurrentInvestmentValue() public {
-        // first need to see whether this is a registered address
-        require(_AddrsToInvestorNo[msg.sender] != 0, "Not an investor");
-
-        //uint256 _InvestmentDate = khanyeziTokens._investments[msg.sender].depositeDate;
-        uint256 _InvestmentAmount = khanyeziTokens._investments[msg.sender].amount;
-        uint256 _interest = khanyeziTokens.interest();
-
-        uint256 _timeNow = now;
-        uint256 _approximateMonths = (_timeNow - _InvestmentDate) / 3.85802469136e-7;
-
-        uint256 CurrentValue = _InvestmentAmount*(1 + _interest/100)*_approximateMonths;
-        // can use message.sender as we want to map the address that calls the function
-        return CurrentValue;
-    }
-
-*/
-
-
