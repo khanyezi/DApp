@@ -8,7 +8,7 @@ title {
 }
 body, html {
 	height: 100%;
-	font-family: Poppins-Regular, sans-serif;
+	font-family:Verdana;
 }
 .bg-primary {
   background-color: #007bff57 ;
@@ -17,7 +17,7 @@ body, html {
 
 
 .bg-dark {
-  background-color: #4158d0;
+  background-color: #909ee6;
 }
 .center {
   display: block;
@@ -45,4 +45,20 @@ body, html {
   font-family: Poppins-Regular, sans-serif;
 }
 
+.color-box {
+  text-align: center;
+  font-size: 60px;
+  background-color:aliceblue; 
+  width:100%; 
+  height:auto; 
+  padding:5%;
+}
 
+.color-box2 {
+  text-align: center;
+  font-size: 40px;
+  background-color:aliceblue; 
+  width:100%; 
+  height:auto; 
+  padding:5%;
+}
